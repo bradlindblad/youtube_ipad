@@ -26,10 +26,9 @@ if __name__ == "__main__":
         try:
             get_vid(i)
         except:
-            print(f'URL: { i } bad ...')
+            print(f"URL: { i } bad ...")
             pass
 
-    # list(map(get_vid, to_get))
     os.system(
         "audioconvert convert /home/brad/Desktop/raw_downloads /home/brad/Desktop/to_yoto"
     )
