@@ -60,6 +60,7 @@ if __name__ == "__main__":
         )
         os.system(f"cp -R /home/brad/Desktop/to_yoto/. /home/brad/Music/yoto_downloads/{ DIR_NAME }")
         os.system("rm -r /home/brad/Desktop/raw_downloads")
+        os.system("rm -r /home/brad/Desktop/to_yoto")
         print(
             """
             Copied files to ~/Music/yoto_downloads ...
