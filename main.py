@@ -1,4 +1,3 @@
-
 from alive_progress import alive_bar
 import os
 from pytube import YouTube
@@ -23,26 +22,27 @@ urls = to_get.readlines()
 
 # Define functions ------------------------------
 
+
 def get_vid(url):
-        # Create a YouTube object by passing the URL of the video
-        yt = YouTube(url)
+    # Create a YouTube object by passing the URL of the video
+    yt = YouTube(url)
 
-        # Filter the available video streams to select only the audio stream
-        video = yt.streams.filter(only_audio=True).first()
+    # Filter the available video streams to select only the audio stream
+    video = yt.streams.filter(only_audio=True).first()
 
-        # Download the selected audio stream and save it to a specified directory
-        out_file = video.download(output_path=DIR_NAME)
+    # Download the selected audio stream and save it to a specified directory
+    out_file = video.download(output_path=DIR_NAME)
 
-        # Split the downloaded file path into the base name and extension
-        base, ext = os.path.splitext(out_file)
+    # Split the downloaded file path into the base name and extension
+    base, ext = os.path.splitext(out_file)
 
-        # Create a new file name with the '.mp3' extension
-        new_file = base + '.mp3'
+    # Create a new file name with the '.mp3' extension
+    new_file = base + ".mp3"
 
-        # Rename the downloaded audio file to have the '.mp3' extension
-        os.rename(out_file, new_file)
- 
- 
+    # Rename the downloaded audio file to have the '.mp3' extension
+    os.rename(out_file, new_file)
+
+
 if __name__ == "__main__":
     # Iterate through a list of input video URLs or file paths
     with alive_bar(
@@ -51,7 +51,6 @@ if __name__ == "__main__":
         bar="bubbles",
         title="Converting youtube vids to audio!",
     ) as bar:
-    
         for i in urls:
             try:
                 get_vid(i)
@@ -59,8 +58,6 @@ if __name__ == "__main__":
                 print(f"Bad url: {i}")
                 pass
             bar()
-        
-    
 
     print(
         f"""
@@ -73,5 +70,3 @@ if __name__ == "__main__":
     os.system("brave-browser https://my.yotoplay.com")
 
     os.system(f'xdg-open "{ DIR_NAME }"')
-
-        
